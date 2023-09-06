@@ -12,7 +12,7 @@ namespace MagicCards.Models
 
         public String LogoUrl { get; set; }
 
-        public ICollection<Carta> Cartas { get; set; }
+        public virtual ICollection<Carta> Cartas { get; set; }
 
     }
 }

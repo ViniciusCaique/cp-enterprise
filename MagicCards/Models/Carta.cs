@@ -11,5 +11,9 @@ namespace MagicCards.Models
         public string Descricao { get; set; }
         public string FotoUrl { get; set; }
 
+        public virtual Colecao Colecao { get; set; }    
+
+        public virtual Ilustrador Ilustrador { get; set; }
+
     }
 }

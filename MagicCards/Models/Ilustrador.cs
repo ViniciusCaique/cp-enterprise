@@ -8,6 +8,7 @@ namespace MagicCards.Models
         public int IlustradorId { get; set; }
         public string Nome { get; set; }
 
-        public ICollection<Carta> Cartas { get; set; }
+        public virtual ICollection<Carta> Cartas { get; set; }
+
     }
 }
