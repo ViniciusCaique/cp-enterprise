@@ -1,6 +1,7 @@
 
 using MagicCards.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +11,13 @@ builder.Services.AddControllersWithViews();
 
 var oracleConnectionString = builder.Configuration.GetConnectionString("oracle");
 
+
+
+
+
 builder.Services.AddDbContext<MagicDbContext>(options =>
     options.UseOracle(oracleConnectionString));
+
 
 
 var app = builder.Build();
@@ -36,3 +42,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+

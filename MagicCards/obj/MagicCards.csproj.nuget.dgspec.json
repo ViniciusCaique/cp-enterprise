@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\coisas\\facul\\fiap2a\\enterprise\\2-semestre\\MagicCards\\MagicCards\\MagicCards.csproj": {}
+    "C:\\Users\\Fernando\\cp-enterprise\\MagicCards\\MagicCards.csproj": {}
   },
   "projects": {
-    "D:\\coisas\\facul\\fiap2a\\enterprise\\2-semestre\\MagicCards\\MagicCards\\MagicCards.csproj": {
+    "C:\\Users\\Fernando\\cp-enterprise\\MagicCards\\MagicCards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\coisas\\facul\\fiap2a\\enterprise\\2-semestre\\MagicCards\\MagicCards\\MagicCards.csproj",
+        "projectUniqueName": "C:\\Users\\Fernando\\cp-enterprise\\MagicCards\\MagicCards.csproj",
         "projectName": "MagicCards",
-        "projectPath": "D:\\coisas\\facul\\fiap2a\\enterprise\\2-semestre\\MagicCards\\MagicCards\\MagicCards.csproj",
-        "packagesPath": "C:\\Users\\Vinicius Caique\\.nuget\\packages\\",
-        "outputPath": "D:\\coisas\\facul\\fiap2a\\enterprise\\2-semestre\\MagicCards\\MagicCards\\obj\\",
+        "projectPath": "C:\\Users\\Fernando\\cp-enterprise\\MagicCards\\MagicCards.csproj",
+        "packagesPath": "C:\\Users\\Fernando\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Fernando\\cp-enterprise\\MagicCards\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Vinicius Caique\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

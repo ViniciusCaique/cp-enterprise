@@ -51,21 +51,25 @@ namespace MagicCards.Controllers
             return View();
         }
 
-        // POST: Colecao/Create
+        // POST: Carta/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ColecaoId,Nome,Ano,LogoUrl")] Colecao colecao)
+        public async Task<ActionResult<Colecao>> Create(Colecao colecao)
         {
-            if (ModelState.IsValid)
+
+            if (_context.Colecoes == null)
             {
-                _context.Add(colecao);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Problem("Entity set 'MagicDbContext.Colecao'  is null.");
             }
-            return View(colecao);
+
+            _context.Add(colecao);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetHospede", new { id = colecao.ColecaoId }, colecao);
+
         }
+
 
         // GET: Colecao/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -88,7 +92,7 @@ namespace MagicCards.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ColecaoId,Nome,Ano,LogoUrl")] Colecao colecao)
+        public async Task<IActionResult> Edit(int id, Colecao colecao)
         {
             if (id != colecao.ColecaoId)
             {

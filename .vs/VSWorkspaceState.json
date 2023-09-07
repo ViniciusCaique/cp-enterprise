@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\MagicCards",
+    "\\MagicCards\\Migrations",
     "\\MagicCards\\Views",
     "\\MagicCards\\Views\\Home"
   ],
-  "SelectedNode": "\\MagicCards.sln",
+  "SelectedNode": "\\MagicCards\\Migrations\\20230906215214_initial.Designer.cs",
   "PreviewInSolutionExplorer": false
 }

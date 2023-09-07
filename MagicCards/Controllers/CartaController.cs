@@ -22,12 +22,11 @@ namespace MagicCards.Controllers
         // GET: Carta
         public async Task<IActionResult> Index()
         {
-              return _context.Cartas != null ? 
-                          View(await _context.Cartas.ToListAsync()) :
-                          Problem("Entity set 'MagicDbContext.Cartas'  is null.");
+            return _context.Cartas != null ?
+                        View(await _context.Cartas.ToListAsync()) :
+                        Problem("Entity set 'MagicDbContext.Cartas'  is null.");
         }
 
-        // GET: Carta/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Cartas == null)
@@ -42,28 +41,6 @@ namespace MagicCards.Controllers
                 return NotFound();
             }
 
-            return View(carta);
-        }
-
-        // GET: Carta/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Carta/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CartaId,Nome,Tipo,Descricao,FotoUrl")] Carta carta)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(carta);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
             return View(carta);
         }
 
@@ -88,7 +65,7 @@ namespace MagicCards.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CartaId,Nome,Tipo,Descricao,FotoUrl")] Carta carta)
+        public async Task<IActionResult> Edit(int id, Carta carta)
         {
             if (id != carta.CartaId)
             {
@@ -118,10 +95,11 @@ namespace MagicCards.Controllers
             return View(carta);
         }
 
+
         // GET: Carta/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Cartas == null)
+            if (id == null || _context.Cartas== null)
             {
                 return NotFound();
             }
@@ -135,6 +113,8 @@ namespace MagicCards.Controllers
 
             return View(carta);
         }
+
+
 
         // POST: Carta/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -150,10 +130,35 @@ namespace MagicCards.Controllers
             {
                 _context.Cartas.Remove(carta);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+
+        // POST: Carta/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public async Task<ActionResult<Carta>> Create(Carta carta)
+        {
+
+            if (_context.Cartas == null)
+            {
+                return Problem("Entity set 'MagicDbContext.Cartas'  is null.");
+            }
+
+            _context.Add(carta);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetCarta", new { id = carta.CartaId }, carta);
+
+        }
+
+
+
+
 
         private bool CartaExists(int id)
         {

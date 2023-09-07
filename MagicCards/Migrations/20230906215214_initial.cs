@@ -12,7 +12,7 @@ namespace MagicCards.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Enrollment",
+                name: "Colecao",
                 columns: table => new
                 {
                     ColecaoId = table.Column<int>(type: "NUMBER(10)", nullable: false)
@@ -27,7 +27,7 @@ namespace MagicCards.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Student",
+                name: "Ilustrador",
                 columns: table => new
                 {
                     IlustradorId = table.Column<int>(type: "NUMBER(10)", nullable: false)

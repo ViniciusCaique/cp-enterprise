@@ -1,5 +1,6 @@
 ﻿using MagicCards.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace MagicCards.Data
 {
@@ -13,9 +14,10 @@ namespace MagicCards.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           // modelBuilder.Entity<Carta>().HasOne(r => r.Colecao).WithMany(q => q.Cartas).OnDelete(deleteBehavior: DeleteBehavior.Cascade);
             modelBuilder.Entity<Carta>().ToTable("Carta");
-            modelBuilder.Entity<Colecao>().ToTable("Enrollment");
-            modelBuilder.Entity<Ilustrador>().ToTable("Student");
+            modelBuilder.Entity<Colecao>().ToTable("Colecoes");
+            modelBuilder.Entity<Ilustrador>().ToTable("Ilustradores");
         }
-    }
+    }   
 }

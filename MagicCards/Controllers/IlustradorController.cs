@@ -22,9 +22,9 @@ namespace MagicCards.Controllers
         // GET: Ilustrador
         public async Task<IActionResult> Index()
         {
-              return _context.Ilustradores != null ? 
-                          View(await _context.Ilustradores.ToListAsync()) :
-                          Problem("Entity set 'MagicDbContext.Ilustradores'  is null.");
+            return _context.Ilustradores != null ?
+                        View(await _context.Ilustradores.ToListAsync()) :
+                        Problem("Entity set 'MagicDbContext.Ilustradores'  is null.");
         }
 
         // GET: Ilustrador/Details/5
@@ -51,21 +51,26 @@ namespace MagicCards.Controllers
             return View();
         }
 
-        // POST: Ilustrador/Create
+        // POST: Carta/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IlustradorId,Nome")] Ilustrador ilustrador)
+        public async Task<ActionResult<Ilustrador>> Create(Ilustrador ilustrador)
         {
-            if (ModelState.IsValid)
+
+            if (_context.Ilustradores == null)
             {
-                _context.Add(ilustrador);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Problem("Entity set 'MagicDbContext.Ilustrador'  is null.");
             }
-            return View(ilustrador);
+
+            _context.Add(ilustrador);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetHospede", new { id = ilustrador.IlustradorId }, ilustrador);
+
         }
+
+
 
         // GET: Ilustrador/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -143,7 +148,7 @@ namespace MagicCards.Controllers
         {
             if (_context.Ilustradores == null)
             {
-                return Problem("Entity set 'MagicDbContext.Ilustradores'  is null.");
+                return Problem("Entity set 'MagicDbContext.Ilustradores' is null.");
             }
             var ilustrador = await _context.Ilustradores.FindAsync(id);
             if (ilustrador != null)
